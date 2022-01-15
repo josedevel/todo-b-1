@@ -2,30 +2,15 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +20,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.TODOListContainer {
+  width : 900px;
+  margin: 20px auto auto auto;
+  padding: 2px;
+}
+
+.TODOList {
+  border: 1px solid gray;
+  padding: 2px;
+}
+
+.TODOListControls {
+  margin: 20px auto auto auto;
+}
+
+.TODO_checked {
+  text-decoration: line-through;
+}
+
+.TODO_deleted {
+  display: none;
 }
