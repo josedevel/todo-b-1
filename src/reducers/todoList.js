@@ -22,15 +22,17 @@ export default(state = {
           todoLists: state.todoLists.concat(action.todoList)
         };
       case TODO_LIST_CHECK:
-        /*let list = state.todoLists.filter(element => element.id === action.todoListId);
-        list[0].checked = action.checked;*/
-        //console.log(state);
-        state.todoLists[action.todoListId].checked = action.checked;
-        //console.log(state);
         return {
           ...state,
-          /*todoLists: state.todoLists,*/
-          test: 1
+          todoLists: state.todoLists.map(element => {
+            if(element.id !== action.todoListId){
+              return element;
+            }
+            return {
+              ...element,
+              checked: action.checked
+            }
+          }),
         };
       default:
         return state;

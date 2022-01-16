@@ -20,12 +20,12 @@ const TODOListControls = (props) => {
     const id = Math.floor(Math.random() * 100);
     const inputValue = document.getElementById('TODOListADD');
     const todoList = [];
-    todoList[id] = {
+    todoList.push({
         id: id,
         text: inputValue.value,
         checked: false,
         deleted: false
-    };
+    });
     props.todoListAdd(todoList);
   };
 
