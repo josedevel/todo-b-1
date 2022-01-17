@@ -21,7 +21,6 @@ const TODOListContainer = (props) => {
     });
 
     const {todoLists} = props;
-    //console.log(todoLists);
 
     return (
         <div>

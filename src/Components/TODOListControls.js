@@ -4,7 +4,6 @@ import {todoListAdd} from '../actions/actions.js';
 
 const mapStateToProps = state => {
   return {
-    // test
     ...state.todoList
     }
 };
