@@ -1,5 +1,8 @@
 import {connect} from 'react-redux';
 import {todoListAdd} from '../actions/actions.js';
+import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 const mapStateToProps = state => {
@@ -30,11 +33,14 @@ const TODOListControls = (props) => {
 
   return (
     <div className="TODOListControls">
-        <div>
-        Controls: &nbsp;
-        <input type={'text'} name='TODOListADD' id='TODOListADD' /> &nbsp;
-        <button type="button" onClick={handleAdd} >ADD</button>
-        </div>
+      <div>
+          <label htmlFor="TODOListADD" style={{fontWeight: 'bold'}}>Title:</label> &nbsp;
+          <input type={'text'} name='TODOListADD' id='TODOListADD' style={{width: '400px'}} /> &nbsp;
+          {/*<button type="button" onClick={handleAdd} >ADD</button>*/}
+      </div>
+      <div style={{marginTop: '8px'}}>
+        <Button variant="info" onClick={handleAdd} style={{width: '200px'}}>ADD <FontAwesomeIcon icon={faPlusCircle} /></Button>
+      </div>
     </div>
   );
 };

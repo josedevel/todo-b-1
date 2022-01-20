@@ -2,6 +2,7 @@ import TODOListContainer from './Components/TODOListContainer.js'
 import TODOListControls from './Components/TODOListControls.js'
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -9,12 +10,14 @@ function App() {
       <header className="App-header">
         TODO List APP
       </header>
-      <TODOListContainer>
-        
-      </TODOListContainer>
-      <TODOListControls>
+      <div className='AppContainer'>
+        <TODOListContainer>
+          
+        </TODOListContainer>
+        <TODOListControls>
 
-      </TODOListControls>
+        </TODOListControls>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,8 @@
 import {connect} from 'react-redux';
 import {todoListCheck, todoListDelete, todoListRequest} from '../actions/actions.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const mapStateToProps = state => {
   //console.log(state);
@@ -29,7 +32,9 @@ const TODOList = (props) => {
           {/*props.children*/}
           <input type={'checkbox'} id={`TODO_checkbox_${props.data.id}`} onClick={handleCheck} /> &nbsp;
           <span id={`TODO_text_${props.data.id}`} className={props.data.checked ? 'TODO_checked' : ''}> {props.data.text} </span> &nbsp;
-          <button type="button" id={`TODO_delete_${props.data.id}`} onClick={handleDelete}>X</button>
+          <button type="button" id={`TODO_delete_${props.data.id}`} onClick={handleDelete}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
         </div>
     );
 };

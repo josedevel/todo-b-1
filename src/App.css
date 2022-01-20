@@ -13,19 +13,16 @@
   color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.AppContainer {
+  width: 600px;
+  margin: auto;
 }
 
 .TODOListContainer {
-  width : 900px;
+  width : 600px;
   margin: 20px auto auto auto;
   padding: 2px;
+  border: 1px solid gray;
 }
 
 .TODOList {
@@ -35,6 +32,7 @@
 
 .TODOListControls {
   margin: 20px auto auto auto;
+  width: 100%;
 }
 
 .TODO_checked {
