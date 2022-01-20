@@ -19,7 +19,6 @@
 }
 
 .TODOListContainer {
-  width : 600px;
   margin: 20px auto auto auto;
   padding: 2px;
   border: 1px solid gray;
@@ -37,6 +36,7 @@
 
 .TODO_checked {
   text-decoration: line-through;
+  background-color: #fff3cd;
 }
 
 .TODO_deleted {
