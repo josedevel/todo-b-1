@@ -60,7 +60,7 @@ const TODOListControls = (props) => {
           <option value='low'>Low</option>
         </select>
         &nbsp;
-        <Button variant="info" onClick={handleAdd} style={{width: '190px'}} id='TODOADDBtn' disabled={(!text || priority==='test')}>
+        <Button variant="info" onClick={handleAdd} style={{width: '190px', marginTop: '-3px'}} id='TODOADDBtn' disabled={(!text || priority==='test')}>
           ADD TODO <FontAwesomeIcon icon={faPlusCircle} />
         </Button>
       </div>
