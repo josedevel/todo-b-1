@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {connect} from 'react-redux';
 import {todoListAdd} from '../actions/actions.js';
 import Button from 'react-bootstrap/Button';
@@ -12,34 +13,56 @@ const mapStateToProps = state => {
 };
   
 const mapDispatchToProps = {
-    todoListAdd
+  todoListAdd,
 };
 
 const TODOListControls = (props) => {
 
-  const handleAdd = () => {
+  const [text, setText] = useState('');
+  const [priority, setPriority] = useState('test');
+
+  const handleAdd = (event) => {
 
     const id = Math.floor(Math.random() * 100);
-    const inputValue = document.getElementById('TODOListADD');
     const todoList = [];
     todoList.push({
         id: id,
-        text: inputValue.value,
+        text: text,
         checked: false,
-        deleted: false
+        deleted: false,
+        priority: priority,
+        time: 0
     });
     props.todoListAdd(todoList);
   };
+
+  const handleTextChange = (event) => {
+    setText(event.target.value);
+  }
+
+  const handlePriorityChange = (event) => {
+    setPriority(event.target.value);
+  }
 
   return (
     <div className="TODOListControls">
       <div>
           <label htmlFor="TODOListADD" style={{fontWeight: 'bold'}}>Title:</label> &nbsp;
-          <input type={'text'} name='TODOListADD' id='TODOListADD' style={{width: '400px'}} /> &nbsp;
+          <input type={'text'} name='TODOListADD' id='TODOListADD' style={{width: '400px'}} onKeyUp={handleTextChange} /> &nbsp;
           {/*<button type="button" onClick={handleAdd} >ADD</button>*/}
       </div>
       <div style={{marginTop: '8px'}}>
-        <Button variant="info" onClick={handleAdd} style={{width: '200px'}}>ADD <FontAwesomeIcon icon={faPlusCircle} /></Button>
+        <label htmlFor="TODOListPRIORITY" style={{fontWeight: 'bold'}}>Priority:</label> &nbsp;
+        <select style={{padding: '8px', width: '190px'}} id='TODOListPRIORITY' defaultValue='test' onChange={handlePriorityChange}>
+          <option  value='test'>Select Priority</option>
+          <option value='high'>High</option>
+          <option value='medium'>Medium</option>
+          <option value='low'>Low</option>
+        </select>
+        &nbsp;
+        <Button variant="info" onClick={handleAdd} style={{width: '190px'}} id='TODOADDBtn' disabled={(!text || priority==='test')}>
+          ADD TODO <FontAwesomeIcon icon={faPlusCircle} />
+        </Button>
       </div>
     </div>
   );

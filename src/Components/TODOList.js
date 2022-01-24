@@ -1,13 +1,11 @@
 import {connect} from 'react-redux';
-import {todoListCheck, todoListDelete, todoListRequest} from '../actions/actions.js';
+import {todoListCheck, todoListDelete} from '../actions/actions.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const mapStateToProps = state => {
-  //console.log(state);
     return {
-      // test
+      // the reducer
       ...state.todoList
     }
 };

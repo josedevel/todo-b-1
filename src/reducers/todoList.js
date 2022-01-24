@@ -2,7 +2,7 @@ import {
     TODO_LIST_REQUEST,
     TODO_LIST_ADD,
     TODO_LIST_CHECK,
-    TODO_LIST_DELETE
+    TODO_LIST_DELETE,
 } from "../actions/actions";
 
 export default(state = {

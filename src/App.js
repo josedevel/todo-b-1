@@ -1,6 +1,5 @@
 import TODOListContainer from './Components/TODOListContainer.js'
 import TODOListControls from './Components/TODOListControls.js'
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

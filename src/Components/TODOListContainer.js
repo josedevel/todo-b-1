@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {todoListRequest} from '../actions/actions.js';
 import TODOList from './TODOList.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 
 const mapStateToProps = state => {
@@ -26,7 +27,7 @@ const TODOListContainer = (props) => {
 
     return (
         <div>
-            TODOs <FontAwesomeIcon icon={faClipboardCheck} />
+            TODOs <FontAwesomeIcon icon={faClipboardCheck} />&nbsp;<FontAwesomeIcon icon={faCoffee} />
             <div className='TODOListContainer'>
               {todoLists && todoLists.map(todoList => (  
                 <TODOList data={todoList} key={todoList.id}>
