@@ -31,7 +31,7 @@ const TODOListControls = (props) => {
         checked: false,
         deleted: false,
         priority: priority,
-        time: 0
+        time: new Date().getTime()
     });
     props.todoListAdd(todoList);
   };
@@ -60,8 +60,13 @@ const TODOListControls = (props) => {
           <option value='low'>Low</option>
         </select>
         &nbsp;
-        <Button variant="info" onClick={handleAdd} style={{width: '190px', marginTop: '-3px'}} id='TODOADDBtn' disabled={(!text || priority==='test')}>
-          ADD TODO <FontAwesomeIcon icon={faPlusCircle} />
+        <Button 
+          variant="info" 
+          onClick={handleAdd} 
+          style={{width: '190px', marginTop: '-3px'}} 
+          id='TODOADDBtn' 
+          disabled={(!text || priority==='test')}>
+            ADD TODO <FontAwesomeIcon icon={faPlusCircle} />
         </Button>
       </div>
     </div>

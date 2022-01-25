@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {todoListRequest} from '../actions/actions.js';
 import TODOList from './TODOList.js'
@@ -8,35 +7,31 @@ import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 
 const mapStateToProps = state => {
   return {
-      // test
+      // the reducer
       ...state.todoList
     }
 };
 
 const mapDispatchToProps = {
-  todoListRequest
+  //todoListRequest
 };
 
 const TODOListContainer = (props) => {
 
-    useEffect(() => {
-        props.todoListRequest();
-    });
+  const {todoLists} = props;
 
-    const {todoLists} = props;
-
-    return (
-        <div>
-            TODOs <FontAwesomeIcon icon={faClipboardCheck} />&nbsp;<FontAwesomeIcon icon={faCoffee} />
-            <div className='TODOListContainer'>
-              {todoLists && todoLists.map(todoList => (  
-                <TODOList data={todoList} key={todoList.id}>
-                    {/*todoList.text*/}
-                </TODOList>
-              ))}
-            </div>
-        </div>
-    );
+  return (
+    <div>
+      TODOs <FontAwesomeIcon icon={faClipboardCheck} />&nbsp;<FontAwesomeIcon icon={faCoffee} />
+      <div className='TODOListContainer'>
+        {todoLists && todoLists.map(todoList => (  
+          <TODOList data={todoList} key={todoList.id}>
+            {/*todoList.text*/}
+          </TODOList>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TODOListContainer);

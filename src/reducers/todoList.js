@@ -1,5 +1,4 @@
 import {
-    TODO_LIST_REQUEST,
     TODO_LIST_ADD,
     TODO_LIST_CHECK,
     TODO_LIST_DELETE,
@@ -9,15 +8,20 @@ export default(state = {
     todoLists: [],
 }, action) => {
     switch (action.type) {
-      case TODO_LIST_REQUEST:
-        return {
-          ...state,
-          todoLists: state.todoLists
-        };
       case TODO_LIST_ADD:
         return {
           ...state,
-          todoLists: state.todoLists.concat(action.todoList)
+          //todoLists: state.todoLists.concat(action.todoList),
+          todoLists: state.todoLists.concat(action.todoList).slice().sort(function(a, b) {
+            console.log('test1');
+            if(a.time > b.time){
+              return -1;
+            }
+            if(b.time > a.time){
+              return 1;
+            }
+            return 0;
+          })
         };
       case TODO_LIST_CHECK:
         return {
