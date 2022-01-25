@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import {todoListRequest} from '../actions/actions.js';
 import TODOList from './TODOList.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
