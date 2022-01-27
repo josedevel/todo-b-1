@@ -1,0 +1,6 @@
+docker-compose up --build
+
+git tag <tagName>
+
+git push origin --tags
+
