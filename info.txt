@@ -4,7 +4,7 @@ git tag <tagName>
 
 git push origin --tags
 
-docker exec -it 3gpchallenge_db-mongodb_1 bash
+docker exec -it todo-b-1-db-mongodb-1 bash
 
 mongo -u main_admin -p abc123
 
