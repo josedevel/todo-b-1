@@ -12,4 +12,16 @@ router.get("/todos", async (req, res) => {
   res.send(todos)
 })
 
+router.post("/todo", async (req, res) => {
+  const newTODO = new TODO({
+    text: req.body.text,
+    checked: req.body.checked,
+    deleted: req.body.deleted,
+    priority: req.body.priority,
+    time: req.body.time,
+  })
+  await newTODO.save()
+  res.send(newTODO)
+})
+
 module.exports = router
