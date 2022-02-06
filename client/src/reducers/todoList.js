@@ -1,4 +1,6 @@
 import {
+    TODO_LIST_REQUEST,
+    TODO_LIST_RECEIVED,
     TODO_LIST_ADD,
     TODO_LIST_CHECK,
     TODO_LIST_DELETE,
@@ -6,6 +8,7 @@ import {
 
 export default(state = {
     todoLists: [],
+    isFetching: false
 }, action) => {
     switch (action.type) {
       case TODO_LIST_ADD:
@@ -62,7 +65,8 @@ export default(state = {
             if(a.priority === 'low' && b.priority === 'low'){
               return 0;
             }
-          })
+          }),
+          isFetching: false
         };
       case TODO_LIST_CHECK:
         return {
@@ -75,7 +79,8 @@ export default(state = {
               ...element,
               checked: action.checked
             }
-          })
+          }),
+          isFetching: false
         };
         case TODO_LIST_DELETE:
           return {
@@ -88,7 +93,13 @@ export default(state = {
                 ...element,
                 deleted: action.deleted
               }
-            })
+            }),
+            isFetching: false
+          };
+        case TODO_LIST_REQUEST:
+          return {
+            ...state,
+            isFetching: true
           };
       default:
         return state;

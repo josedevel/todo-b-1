@@ -1,6 +1,5 @@
 import {requests} from '../agent.js';
 export const TODO_LIST_REQUEST = 'TODO_LIST_REQUEST';
-export const TODO_LIST_RECEIVED = 'TODO_LIST_RECEIVED';
 export const TODO_LIST_FETCH = 'TODO_LIST_FETCH';
 export const TODO_LIST_ADD = 'TODO_LIST_ADD';
 export const TODO_LIST_ADD_API = 'TODO_LIST_ADD_API';
@@ -40,12 +39,16 @@ export const todoListRequest = () => ({
     type: TODO_LIST_REQUEST
 });
 
-export const todoListReceived = data => ({
-    type: TODO_LIST_RECEIVED,
-    data: data
-});
-
 export const todoListFetch = () => {
-
+    return (dispatch) => {
+        dispatch(todoListRequest());
+        return requests.get('/todos')
+          .then(response => 
+            {
+              dispatch(todoListAdd(response))
+            }) 
+          //.then(response => dispatch(todoListReceived(response)))
+          //.catch(error => dispatch(blogPostListError(error)));
+    }
 }
 
