@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {connect} from 'react-redux';
-import {todoListAdd} from '../actions/actions.js';
+import {todoListAdd, todoListAddAPI} from '../actions/actions.js';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,7 @@ const mapStateToProps = state => {
   
 const mapDispatchToProps = {
   todoListAdd,
+  todoListAddAPI
 };
 
 const TODOListControls = (props) => {
@@ -33,7 +34,8 @@ const TODOListControls = (props) => {
         priority: priority,
         time: new Date().getTime()
     });
-    props.todoListAdd(todoList);
+    //props.todoListAdd(todoList);
+    props.todoListAddAPI(todoList);
   };
 
   const handleTextChange = (event) => {
