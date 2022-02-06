@@ -21,11 +21,13 @@ export const todoListDelete = (todoListId, deleted) => ({
 });
 
 /* Check action */
-export const todoListCheck = (todoListId, checked) => ({
-    type: TODO_LIST_CHECK,
-    todoListId: todoListId,
-    checked: checked
-});
+export const todoListCheck = (todoListId, checked) =>  {
+    return { 
+      type: TODO_LIST_CHECK,
+      todoListId: todoListId,
+      checked: checked
+    }
+};
 
 export const todoListAddAPI = (todoList) => {
     return (dispatch) => {

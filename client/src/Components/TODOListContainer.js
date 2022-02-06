@@ -25,7 +25,6 @@ const TODOListContainer = (props) => {
   useEffect(() => 
   {
     props.todoListFetch();
-    console.log(props);
   }, []);
 
   return (

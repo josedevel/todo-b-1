@@ -34,7 +34,6 @@ const TODOListControls = (props) => {
         priority: priority,
         time: new Date().getTime()
     });
-    //props.todoListAdd(todoList);
     props.todoListAddAPI(todoList);
   };
 

@@ -72,7 +72,7 @@ export default(state = {
         return {
           ...state,
           todoLists: state.todoLists.map(element => {
-            if(element.id !== action.todoListId){
+            if(element._id !== action.todoListId){
               return element;
             }
             return {
@@ -86,7 +86,7 @@ export default(state = {
           return {
             ...state,
             todoLists: state.todoLists.map(element => {
-              if(element.id !== action.todoListId){
+              if(element._id !== action.todoListId){
                 return element;
               }
               return {
