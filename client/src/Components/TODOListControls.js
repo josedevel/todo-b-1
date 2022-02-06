@@ -24,7 +24,7 @@ const TODOListControls = (props) => {
 
   const handleAdd = (event) => {
 
-    const id = Math.floor(Math.random() * 100);
+    //const id = Math.floor(Math.random() * 100);
     const todoList = [];
     todoList.push({
         //id: id,

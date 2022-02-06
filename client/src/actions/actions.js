@@ -6,6 +6,7 @@ export const TODO_LIST_ADD_API = 'TODO_LIST_ADD_API';
 export const TODO_LIST_DELETE = 'TODO_LIST_DELETE';
 export const TODO_LIST_CHECK = 'TODO_LIST_CHECK';
 export const TODO_LIST_PRIORITY = 'TODO_LIST_PRIORITY';
+export const TODO_LIST_UPDATE = 'TODO_LIST_UPDATE';
 
 /* ADD action */
 export const todoListAdd = (todoList) => ({
@@ -48,9 +49,22 @@ export const todoListFetch = () => {
           .then(response => 
             {
               dispatch(todoListAdd(response))
-            }) 
-          //.then(response => dispatch(todoListReceived(response)))
+            })
           //.catch(error => dispatch(blogPostListError(error)));
+    }
+}
+
+export const todoListUpdate = (todoListUpdate) => {
+    return (dispatch) => {
+        requests.patch('/todo/'+todoListUpdate.id, todoListUpdate)
+        .then(response => {
+            if(todoListUpdate.hasOwnProperty('checked') && typeof todoListUpdate.checked !== 'undefined') {
+                dispatch(todoListCheck(todoListUpdate.id, todoListUpdate.checked))
+            }
+            if(todoListUpdate.hasOwnProperty('deleted') && typeof todoListUpdate.deleted !== 'undefined') {
+                dispatch(todoListDelete(todoListUpdate.id, todoListUpdate.deleted))
+            }
+        })
     }
 }
 

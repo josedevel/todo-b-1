@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {todoListCheck, todoListDelete} from '../actions/actions.js';
+import {todoListCheck, todoListDelete, todoListUpdate} from '../actions/actions.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,16 +13,19 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   todoListCheck,
   todoListDelete,
+  todoListUpdate
 };
 
 const TODOList = (props) => {
 
     const handleCheck = (event) => {
-      props.todoListCheck(props.data._id, event.target.checked);
+      //props.todoListCheck(props.data._id, event.target.checked);
+      props.todoListUpdate({id: props.data._id, checked: event.target.checked});
     }
 
     const handleDelete = (event) => {
-      props.todoListDelete(props.data._id, true);
+      //props.todoListDelete(props.data._id, true);
+      props.todoListUpdate({id: props.data._id, deleted: true});
     }
 
     return (

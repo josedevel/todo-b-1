@@ -1,3 +1,4 @@
+var ObjectId = require('mongoose').Types.ObjectId;
 const express = require("express")
 const TODO = require("./models/TODO")
 const router = express.Router()
@@ -22,6 +23,34 @@ router.post("/todo", async (req, res) => {
   })
   await newTODO.save()
   res.send(newTODO)
+})
+
+router.patch('/todo/:id', async (req, res) => {
+  try {
+    const todo = await TODO.findById(req.params.id)
+
+    if (req.body.text) {
+      todo.text = req.body.text
+    }
+
+    if (typeof req.body.checked !== 'undefined') {
+      todo.checked = req.body.checked
+    }
+
+    if (typeof req.body.deleted !== 'undefined') {
+      todo.deleted = req.body.deleted
+    }
+
+    if (req.body.priority) {
+      todo.priority = req.body.priority
+    }
+
+    await todo.save()
+	res.send(todo)
+  } catch {
+    res.status(404)
+    res.send({ error: "TODO doesn't exist!" })
+  }
 })
 
 module.exports = router
