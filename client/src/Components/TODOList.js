@@ -27,7 +27,7 @@ const TODOList = (props) => {
     return (
         <div id={props.key} className={props.data.deleted ? 'TODO_deleted' : 'TODOList'}>
           {/*props.children*/}
-          <input type={'checkbox'} id={`TODO_checkbox_${props.data.id}`} checked={props.data.checked} onClick={handleCheck} /> &nbsp;
+          <input type={'checkbox'} id={`TODO_checkbox_${props.data.id}`} checked={props.data.checked} onChange={handleCheck} /> &nbsp;
           <span id={`TODO_text_${props.data.id}`} className={props.data.checked ? 'TODO_checked' : ''}> {props.data.text} | {props.data.priority} </span> &nbsp;
           <button type="button" id={`TODO_delete_${props.data.id}`} onClick={handleDelete}>
             <FontAwesomeIcon icon={faTimes} />
