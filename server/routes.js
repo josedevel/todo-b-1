@@ -20,6 +20,7 @@ router.post("/todo", async (req, res) => {
     deleted: req.body.deleted,
     priority: req.body.priority,
     time: req.body.time,
+    currentTime: req.body.currentTime,
   })
   await newTODO.save()
   res.send(newTODO)

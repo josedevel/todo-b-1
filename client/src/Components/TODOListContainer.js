@@ -28,7 +28,7 @@ const TODOListContainer = (props) => {
 
   return (
     <div>
-      TODOs <FontAwesomeIcon icon={faClipboardCheck} />&nbsp;<FontAwesomeIcon icon={faCoffee} />
+      <h4>{props.currentDate.toLocaleDateString()}</h4> TODOs <FontAwesomeIcon icon={faClipboardCheck} />&nbsp;<FontAwesomeIcon icon={faCoffee} />
       <div className='TODOListContainer'>
         {todoLists && todoLists.map(todoList => (  
           <TODOList data={todoList} key={todoList._id}>

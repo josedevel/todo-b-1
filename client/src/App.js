@@ -1,19 +1,23 @@
+import {useState} from 'react';
 import TODOListContainer from './Components/TODOListContainer.js'
 import TODOListControls from './Components/TODOListControls.js'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+
+  const [currentDate, setCurrentDate] = useState(new Date());
+
   return (
     <div className="App">
       <header className="App-header">
         TODO List APP
       </header>
       <div className='AppContainer'>
-        <TODOListContainer>
+        <TODOListContainer currentDate={currentDate}>
           
         </TODOListContainer>
-        <TODOListControls>
+        <TODOListControls currentDate={currentDate}>
 
         </TODOListControls>
       </div>

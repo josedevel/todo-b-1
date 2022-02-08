@@ -27,12 +27,12 @@ const TODOListControls = (props) => {
     //const id = Math.floor(Math.random() * 100);
     const todoList = [];
     todoList.push({
-        //id: id,
         text: text,
         checked: false,
         deleted: false,
         priority: priority,
-        time: new Date().getTime()
+        time: new Date().getTime(),
+        currentTime: props.currentDate.getTime()
     });
     props.todoListAddAPI(todoList);
   };

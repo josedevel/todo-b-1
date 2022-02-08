@@ -33,7 +33,7 @@ export const todoListCheck = (todoListId, checked) =>  {
 export const todoListAddAPI = (todoList) => {
     return (dispatch) => {
       return requests.post('/todo', todoList[0], false).then(function(response){
-        dispatch(todoListAdd(todoList));
+        dispatch(todoListAdd([response]));
       });
     }
 }
