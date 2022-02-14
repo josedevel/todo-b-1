@@ -24,3 +24,6 @@ db.getCollectionInfos();
 db.test.find();
 
 db.<collection>.drop()
+
+#get ip address macOs
+ifconfig |grep inet
