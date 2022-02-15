@@ -7,7 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date('01/01/2022'));
+
+  const setAppCurrentDate = (currentDate) => {
+    setCurrentDate(currentDate);
+  }
 
   return (
     <div className="App">
@@ -21,7 +25,7 @@ function App() {
         <TODOListControls currentDate={currentDate}>
 
         </TODOListControls>
-        <Calendar currentDate={currentDate}>
+        <Calendar currentDate={currentDate} setAppCurrentDate={setAppCurrentDate}>
 
         </Calendar>
       </div>
