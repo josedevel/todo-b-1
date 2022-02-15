@@ -1,13 +1,14 @@
 import React from "react";
 
 
-const today = new Date();
-const firstOfTheMonth = new Date(today.getFullYear(), today.getMonth()+1, 1).getDay();
-const weekdaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const lastDayOfCurrentMonth = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
-let daysOfMonth = [];
+const index = (props) => {
 
-const test = () => {
+  const firstOfTheMonth = new Date(props.currentDate.getFullYear(), props.currentDate.getMonth()+1, 1).getDay();
+  const weekdaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const lastDayOfCurrentMonth = new Date(props.currentDate.getFullYear(), props.currentDate.getMonth()+1, 0).getDate();
+  let daysOfMonth = [];
+
+  const fillDays = () => {
     let j = 0;
     let row = [];
     let k = 0;
@@ -15,7 +16,7 @@ const test = () => {
     for(let i=0; i<(lastDayOfCurrentMonth+firstOfTheMonth); i++){
         row[k] = (i>=firstOfTheMonth)? p++ : '';
         k++;
-        if(/*i>0 &&*/ k%7 === 0){
+        if(k%7 === 0){
             daysOfMonth[j] = row;
             j++;
             row = [];
@@ -23,12 +24,9 @@ const test = () => {
         }
     }
     daysOfMonth[j] = row;
-}
-
-const index = (props) => {
-
-  test();
-  console.log(firstOfTheMonth);
+  }  
+  
+  fillDays();
 
   return (
     <React.Fragment>
