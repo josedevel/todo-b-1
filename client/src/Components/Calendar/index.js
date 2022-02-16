@@ -3,6 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import Button from "react-bootstrap/esm/Button";
+import {connect} from 'react-redux';
+import {todoListFetch} from '../../actions/actions.js';
+
+const mapStateToProps = state => {
+    return {
+        // the reducer
+        ...state.todoList
+      }
+  };
+  
+  const mapDispatchToProps = {
+    todoListFetch
+  };
 
 
 const index = (props) => {
@@ -42,8 +55,10 @@ const index = (props) => {
     props.setAppCurrentDate(nextMonth);
   }
 
-  const handleDayClick = () => {
-      console.log('click');
+  const handleDayClick = (event) => {
+      const queryDate = new Date(props.currentDate.getFullYear(), props.currentDate.getMonth(), event.target.id);
+      props.setAppCurrentDate(queryDate);
+      props.todoListFetch(queryDate.toLocaleDateString());
   }
   
   fillDays();
@@ -74,7 +89,7 @@ const index = (props) => {
             return ( <tr>
               {week.map(day => {
                 return <td className={((today === day) && ((props.currentDate.getMonth()+1) === currentMonth))? 'CalendarToday' : ''}  >
-                    <a href="javascript:void(0);" style={{textDecoration: 'none'}} onClick={handleDayClick}>{day}</a>
+                    <a href="javascript:void(0);" style={{textDecoration: 'none'}} id={day} onClick={handleDayClick}>{day}</a>
                   </td>
               })}
             </tr> )
@@ -85,4 +100,5 @@ const index = (props) => {
   )
 }
 
-export default index;
+//export default index;
+export default connect(mapStateToProps, mapDispatchToProps)(index);

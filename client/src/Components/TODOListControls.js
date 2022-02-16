@@ -32,7 +32,7 @@ const TODOListControls = (props) => {
         deleted: false,
         priority: priority,
         time: new Date().getTime(),
-        currentTime: props.currentDate.getTime()
+        currentTime: props.currentDate
     });
     props.todoListAddAPI(todoList);
   };

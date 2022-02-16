@@ -14,7 +14,8 @@ export default(state = {
         return {
           ...state,
           //todoLists: state.todoLists.concat(action.todoList),
-          todoLists: state.todoLists.concat(action.todoList).slice().sort(function(a, b) {
+          //todoLists: state.todoLists.concat(action.todoList).slice().sort(function(a, b) {
+          todoLists: action.todoList.slice().sort(function(a, b) {
             if(a.priority === 'high' && b.priority === 'high'){
               return 0;
             }

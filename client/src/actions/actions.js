@@ -45,7 +45,7 @@ export const todoListRequest = () => ({
 export const todoListFetch = (dateString) => {
     return (dispatch) => {
         dispatch(todoListRequest());
-        return requests.get('/todos')
+        return requests.get('/todos?date='+dateString)
           .then(response => 
             {
               dispatch(todoListAdd(response))

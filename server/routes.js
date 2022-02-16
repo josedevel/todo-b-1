@@ -9,7 +9,12 @@ router.get('/', (req, res) => {
 
 // Get all TODOS
 router.get("/todos", async (req, res) => {
-  const todos = await TODO.find()
+  const todos = await TODO.find({
+    currentTime: {
+      "$gte": new Date(req.query.date),
+      "$lt": new Date(new Date(req.query.date).getFullYear(), new Date(req.query.date).getMonth(), new Date(req.query.date).getDate()+1)
+    }
+  })
   res.send(todos)
 })
 
