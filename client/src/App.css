@@ -42,3 +42,8 @@
 .TODO_deleted {
   display: none;
 }
+
+.CalendarToday {
+  background-color: blue;
+  color: white;
+}

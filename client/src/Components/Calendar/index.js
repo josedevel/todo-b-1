@@ -1,4 +1,8 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import Button from "react-bootstrap/esm/Button";
 
 
 const index = (props) => {
@@ -7,6 +11,8 @@ const index = (props) => {
   const weekdaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const lastDayOfCurrentMonth = new Date(props.currentDate.getFullYear(), props.currentDate.getMonth()+1, 0).getDate();
   let daysOfMonth = [];
+  const today = new Date().getDate();
+  const currentMonth = new Date().getMonth()+1;
 
   const fillDays = () => {
     let j = 0;
@@ -24,9 +30,6 @@ const index = (props) => {
         }
     }
     daysOfMonth[j] = row;
-
-    console.log('first ' + props.currentDate.getMonth());
-    console.log('last ' + lastDayOfCurrentMonth);
   }
 
   const handlePrevClick = () => {
@@ -38,14 +41,22 @@ const index = (props) => {
     const nextMonth = new Date(props.currentDate.getFullYear(), props.currentDate.getMonth()+1, 1);
     props.setAppCurrentDate(nextMonth);
   }
+
+  const handleDayClick = () => {
+      console.log('click');
+  }
   
   fillDays();
 
   return (
     <React.Fragment>
-      <a href="#" onClick={handlePrevClick}>Prev</a>
+      <Button onClick={handlePrevClick}>
+        <FontAwesomeIcon icon={faArrowCircleLeft} />
+      </Button>
       Calendar {props.currentDate.toLocaleDateString()}
-      <a href="#" onClick={handleNextCLick}>Next</a>
+      <Button onClick={handleNextCLick}>
+        <FontAwesomeIcon icon={faArrowCircleRight} />
+      </Button>
       <table style={{margin: 'auto', width:'100%'}}>
         <thead>
           <tr>
@@ -62,7 +73,9 @@ const index = (props) => {
           {daysOfMonth.map(week => {
             return ( <tr>
               {week.map(day => {
-                return <td>{day}</td>
+                return <td className={((today === day) && ((props.currentDate.getMonth()+1) === currentMonth))? 'CalendarToday' : ''}  >
+                    <a href="javascript:void(0);" style={{textDecoration: 'none'}} onClick={handleDayClick}>{day}</a>
+                  </td>
               })}
             </tr> )
           })}

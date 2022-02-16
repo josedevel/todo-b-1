@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [currentDate, setCurrentDate] = useState(new Date('01/01/2022'));
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const setAppCurrentDate = (currentDate) => {
     setCurrentDate(currentDate);
