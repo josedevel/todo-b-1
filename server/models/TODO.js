@@ -5,8 +5,8 @@ const schema = mongoose.Schema({
 	checked: Boolean,
     deleted: Boolean,
     priority: String,
-    time: Number,
-    currentTime: Number
+    time: Date,
+    currentTime: Date
 })
 
 module.exports = mongoose.model("TODO", schema)

@@ -23,7 +23,7 @@ const TODOListContainer = (props) => {
 
   useEffect(() => 
   {
-    props.todoListFetch();
+    props.todoListFetch(props.currentDate.toLocaleDateString());
   }, []);
 
   return (

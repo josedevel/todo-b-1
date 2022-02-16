@@ -42,7 +42,7 @@ export const todoListRequest = () => ({
     type: TODO_LIST_REQUEST
 });
 
-export const todoListFetch = () => {
+export const todoListFetch = (dateString) => {
     return (dispatch) => {
         dispatch(todoListRequest());
         return requests.get('/todos')
