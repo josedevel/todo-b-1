@@ -1,12 +1,13 @@
 import {requests} from '../agent.js';
 export const TODO_LIST_REQUEST = 'TODO_LIST_REQUEST';
-export const TODO_LIST_FETCH = 'TODO_LIST_FETCH';
+//export const TODO_LIST_FETCH = 'TODO_LIST_FETCH';
 export const TODO_LIST_ADD = 'TODO_LIST_ADD';
 export const TODO_LIST_ADD_API = 'TODO_LIST_ADD_API';
 export const TODO_LIST_DELETE = 'TODO_LIST_DELETE';
 export const TODO_LIST_CHECK = 'TODO_LIST_CHECK';
 export const TODO_LIST_PRIORITY = 'TODO_LIST_PRIORITY';
 export const TODO_LIST_UPDATE = 'TODO_LIST_UPDATE';
+export const TODO_LIST_DATA_RECEIVE = 'TODO_LIST_DATA_RECEIVE';
 
 /* ADD action */
 export const todoListAdd = (todoList) => ({
@@ -42,13 +43,19 @@ export const todoListRequest = () => ({
     type: TODO_LIST_REQUEST
 });
 
+export const todoListDataReceive = (data) => ({
+    type: TODO_LIST_DATA_RECEIVE,
+    data: data
+})
+
 export const todoListFetch = (dateString) => {
     return (dispatch) => {
         dispatch(todoListRequest());
         return requests.get('/todos?date='+dateString)
           .then(response => 
             {
-              dispatch(todoListAdd(response))
+              //dispatch(todoListAdd(response))
+              dispatch(todoListDataReceive(response))
             })
           //.catch(error => dispatch(blogPostListError(error)));
     }

@@ -3,6 +3,7 @@ import {
     TODO_LIST_ADD,
     TODO_LIST_CHECK,
     TODO_LIST_DELETE,
+    TODO_LIST_DATA_RECEIVE
 } from "../actions/actions";
 
 export default(state = {
@@ -14,8 +15,7 @@ export default(state = {
         return {
           ...state,
           //todoLists: state.todoLists.concat(action.todoList),
-          //todoLists: state.todoLists.concat(action.todoList).slice().sort(function(a, b) {
-          todoLists: action.todoList.slice().sort(function(a, b) {
+          todoLists: state.todoLists.concat(action.todoList).slice().sort(function(a, b) {
             if(a.priority === 'high' && b.priority === 'high'){
               return 0;
             }
@@ -101,6 +101,62 @@ export default(state = {
             ...state,
             isFetching: true
           };
+        case TODO_LIST_DATA_RECEIVE:
+          return {
+            ...state,
+            todoLists: action.data.sort(function(a, b) {
+              if(a.priority === 'high' && b.priority === 'high'){
+                return 0;
+              }
+              if(a.priority === 'high' && b.priority === 'medium'){
+                return -1;
+              }
+              if(a.priority === 'high' && b.priority === 'low'){
+                return -1;
+              }
+              if(a.priority === 'medium' && b.priority === 'high'){
+                return 1;
+              }
+              if(a.priority === 'medium' && b.priority === 'low'){
+                return -1;
+              }
+              if(a.priority === 'low' && b.priority === 'high'){
+                return 1;
+              }
+              if(a.priority === 'low' && b.priority === 'medium'){
+                return 1;
+              }
+  
+  
+              if(b.priority === 'high' && a.priority === 'medium'){
+                return 1;
+              }
+              if(b.priority === 'high' && a.priority === 'low'){
+                return 1;
+              }
+              if(b.priority === 'medium' && a.priority === 'high'){
+                return -1;
+              }
+              if(b.priority === 'medium' && a.priority === 'low'){
+                return -1;
+              }
+              if(b.priority === 'low' && a.priority === 'high'){
+                return 1;
+              }
+              if(b.priority === 'low' && a.priority === 'medium'){
+                return 1;
+              }
+  
+  
+              if(a.priority === 'medium' && b.priority === 'medium'){
+                return 0;
+              }
+              if(a.priority === 'low' && b.priority === 'low'){
+                return 0;
+              }
+            }),
+            isFetching: false
+          }
       default:
         return state;
     }
