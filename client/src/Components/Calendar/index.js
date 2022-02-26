@@ -24,7 +24,6 @@ const index = (props) => {
   const weekdaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const lastDayOfCurrentMonth = new Date(props.currentDate.getFullYear(), props.currentDate.getMonth()+1, 0).getDate();
   let daysOfMonth = [];
-  const today = new Date().getDate();
   const currentMonth = new Date().getMonth()+1;
 
   const fillDays = () => {
