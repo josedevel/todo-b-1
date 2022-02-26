@@ -88,7 +88,7 @@ const index = (props) => {
           {daysOfMonth.map(week => {
             return ( <tr>
               {week.map(day => {
-                return <td className={((today === day) && ((props.currentDate.getMonth()+1) === currentMonth))? 'CalendarToday' : ''}  >
+                return <td className={((props.currentDate.getDate() === day) && ((props.currentDate.getMonth()+1) === currentMonth))? 'CalendarToday' : ''}  >
                     <a href="javascript:void(0);" style={{textDecoration: 'none'}} id={day} onClick={handleDayClick}>{day}</a>
                   </td>
               })}
