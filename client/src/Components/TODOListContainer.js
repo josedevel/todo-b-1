@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import TODOList from './TODOList.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,8 +27,8 @@ const TODOListContainer = (props) => {
   }, []);
 
   return (
-    <div>
-      <h4>{props.currentDate.toLocaleDateString()}</h4> TODOs <FontAwesomeIcon icon={faClipboardCheck} />&nbsp;<FontAwesomeIcon icon={faCoffee} />
+    <React.Fragment>
+      <h4>Today: {props.currentDate.toLocaleDateString()} <FontAwesomeIcon icon={faClipboardCheck} />&nbsp;<FontAwesomeIcon icon={faCoffee} /></h4>
       <div className='TODOListContainer'>
         {todoLists && todoLists.map(todoList => (  
           <TODOList data={todoList} key={todoList._id}>
@@ -36,7 +36,7 @@ const TODOListContainer = (props) => {
           </TODOList>
         ))}
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

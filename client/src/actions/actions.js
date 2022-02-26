@@ -1,6 +1,5 @@
 import {requests} from '../agent.js';
 export const TODO_LIST_REQUEST = 'TODO_LIST_REQUEST';
-//export const TODO_LIST_FETCH = 'TODO_LIST_FETCH';
 export const TODO_LIST_ADD = 'TODO_LIST_ADD';
 export const TODO_LIST_ADD_API = 'TODO_LIST_ADD_API';
 export const TODO_LIST_DELETE = 'TODO_LIST_DELETE';

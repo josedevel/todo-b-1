@@ -49,7 +49,7 @@ const TODOListControls = (props) => {
     <div className="TODOListControls">
       <div>
           <label htmlFor="TODOListADD" style={{fontWeight: 'bold'}}>Title:</label> &nbsp;
-          <input type={'text'} name='TODOListADD' id='TODOListADD' style={{width: '400px'}} onKeyUp={handleTextChange} /> &nbsp;
+          <input type={'text'} name='TODOListADD' id='TODOListADD' style={{width: '100%'}} onKeyUp={handleTextChange} /> &nbsp;
       </div>
       <div style={{marginTop: '8px'}}>
         <label htmlFor="TODOListPRIORITY" style={{fontWeight: 'bold'}}>Priority:</label> &nbsp;
