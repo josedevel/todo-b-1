@@ -5,6 +5,7 @@ import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import Button from "react-bootstrap/esm/Button";
 import {connect} from 'react-redux';
 import {todoListFetch} from '../../actions/actions.js';
+import shortid from 'shortid';
 
 const mapStateToProps = state => {
     return {
@@ -76,7 +77,7 @@ const index = (props) => {
           <tr>
             {weekdaysShort.map(day => {
               return (
-                <th>
+                <th key={shortid.generate()}>
                   {day}
                 </th>
               )  
@@ -85,10 +86,10 @@ const index = (props) => {
         </thead>
         <tbody>
           {daysOfMonth.map(week => {
-            return ( <tr>
+            return ( <tr key={shortid.generate()}>
               {week.map(day => {
-                return <td className={((props.currentDate.getDate() === day))? 'CalendarToday' : ''}  >
-                    <a href="javascript:void(0);" style={{textDecoration: 'none'}} id={day} onClick={handleDayClick}>{day}</a>
+                return <td key={shortid.generate()} className={((props.currentDate.getDate() === day))? 'CalendarToday' : ''}  >
+                    <span id={day} onClick={handleDayClick}>{day}</span>
                   </td>
               })}
             </tr> )
