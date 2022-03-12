@@ -72,7 +72,7 @@ const index = (props) => {
       <Button onClick={handleNextCLick}>
         <FontAwesomeIcon icon={faArrowCircleRight} />
       </Button>
-      <table style={{margin: 'auto', width:'100%'}}>
+      <table style={{margin: 'auto', width:'100%'}} className='calendarMain'>
         <thead>
           <tr>
             {weekdaysShort.map(day => {
