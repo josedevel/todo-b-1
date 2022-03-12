@@ -24,7 +24,7 @@ const index = (props) => {
   const weekdaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const lastDayOfCurrentMonth = new Date(props.currentDate.getFullYear(), props.currentDate.getMonth()+1, 0).getDate();
   let daysOfMonth = [];
-  const currentMonth = new Date().getMonth()+1;
+  //const currentMonth = new Date().getMonth()+1;
 
   const fillDays = () => {
     let j = 0;
@@ -87,7 +87,7 @@ const index = (props) => {
           {daysOfMonth.map(week => {
             return ( <tr>
               {week.map(day => {
-                return <td className={((props.currentDate.getDate() === day) && ((props.currentDate.getMonth()+1) === currentMonth))? 'CalendarToday' : ''}  >
+                return <td className={((props.currentDate.getDate() === day))? 'CalendarToday' : ''}  >
                     <a href="javascript:void(0);" style={{textDecoration: 'none'}} id={day} onClick={handleDayClick}>{day}</a>
                   </td>
               })}
@@ -99,5 +99,4 @@ const index = (props) => {
   )
 }
 
-//export default index;
 export default connect(mapStateToProps, mapDispatchToProps)(index);
